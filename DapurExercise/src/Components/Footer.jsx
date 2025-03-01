@@ -7,7 +7,7 @@ import { IconContext } from "react-icons";
 
 const Footer = () => {
   return (
-    <footer className="bg-red-700 text-white py-6 px-10 mt-10 w-full fixed bottom-0 left-0">
+    <footer className="bg-red-700 text-white py-6 px-10 mt-10 w-full bottom-0 left-0">
       {/* Top Part, Website Name */}
       <h2 className="max-w-6xl text-3xl font-bold pb-4 mx-auto">
         Teras Rumah <span className="text-lime-400">Nenek</span>
