@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+@theme{
+    --color-lime: #7D8600;
+    --color-darklime: #1E2000;
+}

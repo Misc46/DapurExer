@@ -44,10 +44,10 @@ const Footer = () => {
         <div className="my-auto h-auto pb-3 flex gap-x-3 flex-row place-content-center sm:place-content-start sm:flex-col sm:py-0 sm:border-l-2 border-white pl-3">
           <h3 className="font-semibold">Recipes</h3>
           <ul className="sm:mt-2 space-y-1">
-            <li><a href="#" className="hover:underline">By Category</a></li>
+            <li><a href="/browse" className="hover:underline">Browse</a></li>
           </ul>
           <ul className="sm:mt-2 space-y-1">
-            <li><a href="#" className="hover:underline">About Us</a></li>
+            <li><a href="/about" className="hover:underline">About Us</a></li>
           </ul>
         </div>
 
