@@ -4,7 +4,8 @@ import Footer from "./Components/Footer";
 import RecipeBrowse from "./Components/RecipeBrowse";
 import CategoryCard from "./Components/CategoryCard";
 import About from "./Components/About";
-import { BrowserRouter, Route, Routes } from "react-router"
+import ResepAyam from "./Components/ResepAyam";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {
   return (
@@ -13,7 +14,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<RecipeBrowse />} />
           <Route path="/browse" element={<RecipeBrowse />} />
-          <Route path="/about" element={<About />} /> 
+          <Route path="/about" element={<About />} />
+          <Route path="/ayam" element={<ResepAyam />} />
         </Routes>
 
         <Footer />
