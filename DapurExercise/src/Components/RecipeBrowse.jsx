@@ -68,7 +68,7 @@ const RecipeBrowse = () => {
         
         <h2 className="text-4xl font-semibold mt-70 pb-5">Recipe of the month!</h2>
 
-          <button className="px-9 py-1 border-2 border-white rounded text-xl flex text-semibold items-center gap-4 text-white bg-transparent">
+          <button className="px-9 py-1 border-2 border-white rounded text-xl text-white flex text-semibold items-center gap-4 bg-transparent hover:bg-zinc-300 bg-opacity-50 border-zinc-300 transition-colors duration-200">
           Bebek Goreng <span className="text-3xl"><HiArrowLongRight /></span>
         </button>
       </div>
