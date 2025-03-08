@@ -66,14 +66,14 @@ const MealDBRecipeRow = ({ mealId }) => {
           <div>
             <div className="flex flex-wrap items-center gap-2 mb-1">
               <h2 className="text-xl font-bold">{meal.strMeal}</h2>
-              <span className="rounded-full bg-[#FFF8E0] px-2 py-0.5 text-xs font-medium">
+              <span className="px-2 py-0.5 text-xs font-medium">
                 {meal.strCategory}
               </span>
-              <span className="rounded-full bg-[#FFF8E0] px-2 py-0.5 text-xs font-medium">
+              <span className="px-2 py-0.5 text-xs font-medium">
                 {meal.strArea}
               </span>
             </div>
-            <p className="text-sm text-gray-700 mb-2 line-clamp-2 h-10 overflow-hidden">
+            <p className="text-sm mb-2 line-clamp-2 h-10 overflow-hidden">
               {getShortDescription()}
             </p>
           </div>
