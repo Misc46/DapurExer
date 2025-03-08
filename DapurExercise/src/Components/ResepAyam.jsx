@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import MealDBRecipeCard from './MealDBRecipeCard';
+import MealDBRecipeRow from './MealDBRecipeRow';
 
 const ResepAyam = () => {
   const [chickenMeals, setChickenMeals] = useState([]);
@@ -29,24 +29,24 @@ const ResepAyam = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white p-10">
-      <div className="mx-auto max-w-7xl">
-        <h1 className="mb-8 text-4xl font-bold text-[#FF7F50]">Resep Ayam</h1>
+    <div className="min-h-screen bg-white p-6 md:p-10">
+      <div className="mx-auto max-w-6xl">
+        <h1 className="mb-8 text-4xl font-bold">Resep Ayam</h1>
         
         {error && (
-          <div className="rounded-md bg-red-50 p-4 text-red-600">
+          <div className="rounded-md bg-red-50 p-4 text-red-600 mb-6">
             {error}
           </div>
         )}
 
         {loading ? (
-          <div className="flex justify-center">
+          <div className="flex justify-center p-10">
             <div className="text-xl text-gray-600">Loading resep ayam...</div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div className="flex flex-col space-y-6">
             {chickenMeals.map((mealId) => (
-              <MealDBRecipeCard key={mealId} mealId={mealId} />
+              <MealDBRecipeRow key={mealId} mealId={mealId} />
             ))}
           </div>
         )}
