@@ -1,25 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import MealDBRecipeRow from './MealDBRecipeRow';
+import React, { useState, useEffect } from "react";
+import MealDBRecipeRow from "./MealDBRecipeRow";
+import { useParams } from "react-router";
 
-const ResepAyam = () => {
+const CategoryRecipeList = () => {
   const [chickenMeals, setChickenMeals] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { category } = useParams();
 
   useEffect(() => {
     const fetchChickenMeals = async () => {
       try {
         const response = await fetch(
-          'https://www.themealdb.com/api/json/v1/1/filter.php?c=Chicken'
+          `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`,
         );
         const data = await response.json();
         if (data.meals) {
-          setChickenMeals(data.meals.map(meal => meal.idMeal));
+          setChickenMeals(data.meals.map((meal) => meal.idMeal));
         } else {
-          setError('No chicken recipes found');
+          setError(`No ${category} recipes found`);
         }
       } catch (err) {
-        setError('Failed to fetch chicken recipes');
+        setError(`Failed to fetch ${category} recipes`);
       } finally {
         setLoading(false);
       }
@@ -31,17 +33,19 @@ const ResepAyam = () => {
   return (
     <div className="min-h-screen bg-white p-6 md:p-10">
       <div className="mx-auto max-w-6xl">
-        <h1 className="mb-8 text-4xl font-bold">Resep Ayam</h1>
-        
+        <h1 className="mb-8 text-4xl font-bold">{category} Recipes</h1>
+
         {error && (
-          <div className="rounded-md bg-red-50 p-4 text-red-600 mb-6">
+          <div className="mb-6 rounded-md bg-red-50 p-4 text-red-600">
             {error}
           </div>
         )}
 
         {loading ? (
           <div className="flex justify-center p-10">
-            <div className="text-xl text-gray-600">Loading resep ayam...</div>
+            <div className="text-xl text-gray-600">
+              Loading {category} Recipes...
+            </div>
           </div>
         ) : (
           <div className="flex flex-col space-y-6">
@@ -55,4 +59,4 @@ const ResepAyam = () => {
   );
 };
 
-export default ResepAyam; 
+export default CategoryRecipeList;
