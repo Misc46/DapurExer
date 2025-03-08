@@ -50,7 +50,7 @@ const MealDBRecipeCard = ({ mealId }) => {
       <p className="text-sm text-gray-600 line-clamp-3">{truncatedDescription}</p>
       <a 
         href={`/recipe/${mealId}`} 
-        className="rounded-md bg-[#FF7F50] px-2 py-1 text-base text-white hover:bg-[#FF6B3C]"
+        className="rounded-md bg-[#c52525] px-2 py-1 text-base text-white hover:opacity-80"
       >
         Lihat Resep
       </a>

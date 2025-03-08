@@ -81,8 +81,7 @@ const MealDBRecipeRow = ({ mealId }) => {
           <div className="flex justify-start">
             <Link 
               to={`/recipe/${mealId}`} 
-              className="rounded-md px-3 py-1.5 text-white font-medium hover:opacity-90 transition"
-              style={{ backgroundColor: 'rgb(197, 37, 37)' }}
+              className="rounded-md px-3 py-1.5 text-white font-medium hover:opacity-80 transition bg-[#c52525] "
             >
               Lihat Resep
             </Link>

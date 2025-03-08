@@ -18,7 +18,7 @@ const RecipeBrowse = () => {
     const fetchRandomMeals = async () => {
       try {
         const meals = [];
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < 15; i++) {
           const response = await fetch(
             "https://www.themealdb.com/api/json/v1/1/random.php",
           );
@@ -105,17 +105,8 @@ const RecipeBrowse = () => {
           </div>
         </div>
 
-        {/* <div>
-        <h2 className="mb-5 text-3xl font-bold">Local Recipes:</h2>
-        <div className="mx-auto flex flex-wrap justify-center gap-8">
-          <RecipeCard />
-          <RecipeCard />
-          <RecipeCard />
-        </div>
-      </div> */}
-
         <div>
-          <h2 className="mb-5 text-3xl font-bold">International Recipes:</h2>
+          <h2 className="mb-5 text-3xl font-bold">Recipes:</h2>
           <div className="mx-auto flex flex-wrap justify-center gap-8">
             {loading ? (
               <div>Loading recipes...</div>
