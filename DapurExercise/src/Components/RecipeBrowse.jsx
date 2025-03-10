@@ -1,5 +1,4 @@
 import CategoryCard from "./CategoryCard";
-import RecipeCard from "./RecipeCard";
 import MealDBRecipeCard from "./MealDBRecipeCard";
 import chicken from "/chicken.png";
 import vegetable from "/vegetable.png";
@@ -10,7 +9,6 @@ import duck from "/bebekgoyeng.png";
 import gradient from "/bebekgradient.png";
 import { HiArrowLongRight } from "react-icons/hi2";
 import About from "./About";
-import Footer from "./Footer";
 
 const RecipeBrowse = () => {
   const [randomMeals, setRandomMeals] = useState([]);
@@ -69,7 +67,7 @@ const RecipeBrowse = () => {
           />
 
           <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center text-white">
-            <h2 className="mt-70 pb-5 text-4xl font-semibold">
+            <h2 className="mt-35 md:mt-70 pb-5 text-4xl font-semibold">
               Recipe of the month!
             </h2>
 
