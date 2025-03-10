@@ -95,12 +95,14 @@ const RecipeBrowse = () => {
               Recipe of the month!
             </h2>
 
-            <button className="text-semibold bg-opacity-50 flex items-center gap-4 rounded border-2 border-white bg-transparent px-9 py-1 text-xl text-white transition-all duration-200 hover:bg-zinc-400 hover:scale-110">
+            <a 
+              href={`/recipe/${recipeOfTheMonth?.idMeal}`}
+              className="text-semibold bg-opacity-50 flex items-center gap-4 rounded border-2 border-white bg-transparent px-9 py-1 text-xl text-white transition-all duration-200 hover:bg-zinc-400 hover:scale-110">
               {recipeOfTheMonth?.strMeal}{" "}
               <span className="text-3xl">
                 <HiArrowLongRight />
               </span>
-            </button>
+            </a>
           </div>
         </div>
       </div>
