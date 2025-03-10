@@ -6,7 +6,7 @@ const About = () => {
       
       {/* { About Us } */}
       <div className="max-w-7xl bg-amber-100 px-12 py-5 mt-2 mb-8 rounded-lg flex flex-col items-center">
-        <div className='text-3xl font-semibold pb-4 md:pb-2'>About Us</div>
+        <div className='text-3xl font-bold pb-4 md:pb-2'>About Us</div>
         <div className='flex flex-col gap-y-5 md:grid md:grid-cols-2'>
           <img className='place-self-center rounded-xl w-auto h-70 md:h-[90%] object-cover' src='https://asset-a.grid.id//crop/0x0:0x0/700x465/photo/2023/03/05/food-categoriesjpg-20230305103538.jpg' alt='About Us' />
           <div className='text-md px-12 py-auto place-self-center text-center md:text-start'>
@@ -25,7 +25,7 @@ const About = () => {
             <div className="text-2xl font-semibold text-black">Freaky Jane</div>
           </div>
           <div className='text-md pt-3'>
-            <p>I'm the one who shared the recipes and voice behind Teras Rumah Nenek. I hope anyone can make delicious food with daily ingredients even if you're busy and living up frugal-life.</p>
+            <p>ZAMN, is that Teras Rumah Nenek!? What is up yo homies, living it up with Yung Freaky here, let's go do some cooking~ 🍳</p>
           </div>
         </div>
       </div>

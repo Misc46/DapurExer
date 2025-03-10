@@ -9,6 +9,8 @@ import { useState, useEffect } from "react";
 import duck from "/bebekgoyeng.png";
 import gradient from "/bebekgradient.png";
 import { HiArrowLongRight } from "react-icons/hi2";
+import About from "./About";
+import Footer from "./Footer";
 
 const RecipeBrowse = () => {
   const [randomMeals, setRandomMeals] = useState([]);
@@ -18,7 +20,7 @@ const RecipeBrowse = () => {
     const fetchRandomMeals = async () => {
       try {
         const meals = [];
-        for (let i = 0; i < 15; i++) {
+        for (let i = 0; i < 5; i++) {
           const response = await fetch(
             "https://www.themealdb.com/api/json/v1/1/random.php",
           );
@@ -52,17 +54,17 @@ const RecipeBrowse = () => {
         </p>
       </div>
 
-      <div className="relative mx-auto h-[90vh] w-full max-w-7xl bg-cover bg-center">
-        <div className="relative h-full w-full">
+      <div className="relative my-auto w-full bg-cover bg-center">
+        <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px]">
           <img
-            className="absolute top-0 left-0 object-cover object-center"
-            src={gradient}
+            className="absolute inset-0 h-full w-full object-cover object-center"
+            src={duck}
             alt=""
           />
-
+          
           <img
-            className="w-full object-cover object-center"
-            src={duck}
+            className="absolute top-0 left-0 object-cover object-center h-full w-full"
+            src={gradient}
             alt=""
           />
 
@@ -71,7 +73,7 @@ const RecipeBrowse = () => {
               Recipe of the month!
             </h2>
 
-            <button className="text-semibold bg-opacity-50 flex items-center gap-4 rounded border-2 border-white border-zinc-300 bg-transparent px-9 py-1 text-xl text-white transition-colors duration-200 hover:bg-zinc-300">
+            <button className="text-semibold bg-opacity-50 flex items-center gap-4 rounded border-2 border-white bg-transparent px-9 py-1 text-xl text-white transition-all duration-200 hover:bg-zinc-400 hover:scale-110">
               Bebek Goreng{" "}
               <span className="text-3xl">
                 <HiArrowLongRight />
@@ -82,7 +84,7 @@ const RecipeBrowse = () => {
       </div>
 
       <div className="mx-10 p-10">
-        <div>
+        <div className="mb-15">
           <h2 className="mb-5 text-3xl font-bold">Categories:</h2>
 
           <div className="flex w-full flex-wrap justify-center gap-8">
@@ -105,9 +107,18 @@ const RecipeBrowse = () => {
           </div>
         </div>
 
+        {/* <div>
+        <h2 className="mb-5 text-3xl font-bold">Local Recipes:</h2>
+        <div className="mx-auto flex flex-wrap justify-center gap-8">
+          <RecipeCard />
+          <RecipeCard />
+          <RecipeCard />
+        </div>
+      </div> */}
+
         <div>
-          <h2 className="mb-5 text-3xl font-bold">Recipes:</h2>
-          <div className="mx-auto flex flex-wrap justify-center gap-8">
+          <h2 className="mb-5 text-3xl font-bold">International Recipes:</h2>
+          <div className="mx-auto flex flex-wrap justify-center gap-4">
             {loading ? (
               <div>Loading recipes...</div>
             ) : (
@@ -116,8 +127,16 @@ const RecipeBrowse = () => {
               ))
             )}
           </div>
+          <div className="w-full flex justify-center">
+            <button className="bg-white-500 border-1 border-black text-black px-4 py-2 rounded-lg mt-5 hover:bg-gray-200 scale-110 hover:scale-125 transition-all duration-200">
+              Load More
+            </button>
+          </div>
         </div>
       </div>
+
+      <About/>
+
     </div>
   );
 };
