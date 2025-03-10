@@ -3,31 +3,31 @@ import MealDBRecipeRow from "./MealDBRecipeRow";
 import { useParams } from "react-router";
 
 const CategoryRecipeList = () => {
-  const [chickenMeals, setChickenMeals] = useState([]);
+  const [randomMeals, setRandomMeals] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const { category } = useParams();
 
   useEffect(() => {
-    const fetchChickenMeals = async () => {
+  const fetchRandomMeals = async () => {
       try {
-        const response = await fetch(
-          `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`,
-        );
-        const data = await response.json();
-        if (data.meals) {
-          setChickenMeals(data.meals.map((meal) => meal.idMeal));
-        } else {
-          setError(`No ${category} recipes found`);
-        }
-      } catch (err) {
-        setError(`Failed to fetch ${category} recipes`);
-      } finally {
-        setLoading(false);
+      const meals = [];
+      for (let i = 0; i < 15; i++) {
+          const response = await fetch(
+          "https://www.themealdb.com/api/json/v1/1/random.php",
+          );
+          const data = await response.json();
+          if (data.meals && data.meals[0]) {
+          meals.push(data.meals[0].idMeal);
+          }
       }
-    };
+      setRandomMeals(meals);
+      } catch (error) {
+      console.error("Failed to fetch random meals:", error);
+      } finally {
+      setLoading(false);
+      }
+  };
 
-    fetchChickenMeals();
+  fetchRandomMeals();
   }, []);
 
   return (
@@ -49,7 +49,7 @@ const CategoryRecipeList = () => {
           </div>
         ) : (
           <div className="flex flex-col space-y-6">
-            {chickenMeals.map((mealId) => (
+            {randomMeals.map((mealId) => (
               <MealDBRecipeRow key={mealId} mealId={mealId} />
             ))}
           </div>

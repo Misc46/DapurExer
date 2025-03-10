@@ -18,6 +18,7 @@ const App = () => {
           <Route path="/browse" element={<RecipeBrowse />} />
           <Route path="/about" element={<About />} />
           <Route path="/category/:category" element={<CategoryRecipeList />} />
+          <Route path="/category/all" element={<AllRecipeList />} />
         </Routes>
         <Footer />
       </div>

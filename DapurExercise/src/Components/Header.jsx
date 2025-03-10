@@ -16,7 +16,6 @@ const Header = () => {
 
     const [showMenu, setShowMenu] = useState(false);
     const handleClick = () => setShowMenu(!showMenu);
-
     const navigate = useNavigate();
 
     const handleNavigation = (path) => {
@@ -55,20 +54,22 @@ const Header = () => {
                     <button onClick={() => handleNavigation('/category/Chicken')}
                         href='#' 
                         className='flex items-center p-2 hover:bg-[#FFB300] hover:text-black transition-all duration-200 w-3/4 rounded-2xl'>
-                        <img src={chicken} alt='Teras Icon' className='w-10 h-10'/><span className='mx-5 border-b-2'>Chicken</span>
+                        <img src={chicken} alt='Chicken Icon' className='w-10 h-10'/><span className='mx-5 border-b-2'>Chicken</span>
                     </button>
                     <button onClick={() => handleNavigation('/category/Seafood')} 
                         href='#' 
                         className='flex items-center p-2 hover:bg-[#FFB300] hover:text-black transition-all duration-200 w-3/4 rounded-2xl'>
-                        <img src={fish} alt='Teras Icon' className='w-10 h-10'/><span className='mx-5 border-b-2'>Seafood</span>
+                        <img src={fish} alt='Fish Icon' className='w-10 h-10'/><span className='mx-5 border-b-2'>Seafood</span>
                     </button>
                     <button onClick={() => handleNavigation('/category/Vegan')} 
                         href='#'
                         className='flex items-center p-2 hover:bg-[#FFB300] hover:text-black transition-all duration-200 w-3/4 rounded-2xl'>
-                        <img src={salad} alt='Teras Icon' className='w-10 h-10'/><span className='mx-5 border-b-2'>Vegetables</span>
+                        <img src={salad} alt='Salad Icon' className='w-10 h-10'/><span className='mx-5 border-b-2'>Vegetables</span>
                     </button>
-                    <button href='#' className='flex items-center p-2 hover:bg-[#FFB300] hover:text-black transition-all duration-200 w-3/4 rounded-2xl'>
-                        <img src={all} alt='Teras Icon' className='w-10 h-10'/><span className='mx-5 border-b-2'>All</span>
+                    <button onClick={() => handleNavigation('/category/all')}
+                        href='#'
+                        className='flex items-center p-2 hover:bg-[#FFB300] hover:text-black transition-all duration-200 w-3/4 rounded-2xl'>
+                        <img src={all} alt='All Icon' className='w-10 h-10'/><span className='mx-5 border-b-2'>All</span>
                     </button>
                 </div>
             </div>
