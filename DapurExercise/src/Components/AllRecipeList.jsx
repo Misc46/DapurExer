@@ -3,37 +3,38 @@ import MealDBRecipeRow from "./MealDBRecipeRow";
 import { useParams } from "react-router";
 
 const CategoryRecipeList = () => {
+  const { category } = useParams(); // ✅ Get category from URL
   const [randomMeals, setRandomMeals] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-  const fetchRandomMeals = async () => {
+    const fetchRandomMeals = async () => {
       try {
-      const meals = [];
-      for (let i = 0; i < 15; i++) {
-          const response = await fetch(
-          "https://www.themealdb.com/api/json/v1/1/random.php",
-          );
+        const meals = [];
+        for (let i = 0; i < 15; i++) {
+          const response = await fetch("https://www.themealdb.com/api/json/v1/1/random.php");
           const data = await response.json();
           if (data.meals && data.meals[0]) {
-          meals.push(data.meals[0].idMeal);
+            meals.push(data.meals[0].idMeal);
           }
-      }
-      setRandomMeals(meals);
+        }
+        setRandomMeals(meals);
       } catch (error) {
-      console.error("Failed to fetch random meals:", error);
+        console.error("Failed to fetch random meals:", error);
+        setError("Failed to load recipes. Please try again.");
       } finally {
-      setLoading(false);
+        setLoading(false);
       }
-  };
+    };
 
-  fetchRandomMeals();
-  }, []);
+    fetchRandomMeals();
+  }, [category]);
 
   return (
     <div className="min-h-screen bg-white p-6 md:p-10">
       <div className="mx-auto max-w-6xl">
-        <h1 className="mb-8 text-4xl font-bold">{category} Recipes</h1>
+        <h1 className="mb-8 text-4xl font-bold">All Recipes</h1> 
 
         {error && (
           <div className="mb-6 rounded-md bg-red-50 p-4 text-red-600">
@@ -44,7 +45,7 @@ const CategoryRecipeList = () => {
         {loading ? (
           <div className="flex justify-center p-10">
             <div className="text-xl text-gray-600">
-              Loading {category} Recipes...
+              Loading recipes...
             </div>
           </div>
         ) : (

@@ -7,6 +7,7 @@ import About from "./Components/About";
 import CategoryRecipeList from "./Components/CategoryRecipeList";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./Components/Header";
+import AllRecipeList from "./Components/AllRecipeList";
 
 const App = () => {
   return (
