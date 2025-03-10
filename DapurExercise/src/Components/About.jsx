@@ -9,7 +9,7 @@ const About = () => {
         <div className='text-3xl font-bold pb-4 md:pb-2'>About Us</div>
         <div className='flex flex-col gap-y-5 md:grid md:grid-cols-2'>
           <img className='place-self-center rounded-xl w-auto h-70 md:h-[90%] object-cover' src='https://asset-a.grid.id//crop/0x0:0x0/700x465/photo/2023/03/05/food-categoriesjpg-20230305103538.jpg' alt='About Us' />
-          <div className='text-md px-12 py-auto place-self-center text-center md:text-start'>
+          <div className='text-md px-0 md:px-12 py-auto place-self-center text-center md:text-start'>
             <p>Lorem ipsum dolor sit amet. Aut voluptatem sunt ad optio nemo et quia inventore ut optio nesciunt. Est explicabo rerum ad harum culpa non culpa adipisci. A alias perferendis ea commodi fugiat est error quidem eum rerum consequatur vel quae exercitationem ut esse nulla qui deserunt eius! Aut obcaecati provident in laudantium quidem in earum explicabo rem sint numquam non voluptas voluptas. Sit neque galisum et praesentium numquam id libero consequatur vel facere fugit qui odit quae. Aut minima sapiente ut cupiditate nemo ad repellat dolorem et reprehenderit doloribus. Eos nulla repellat qui iure ipsa eum laudantium ipsa 33 totam minima! Et dolor quisquam non ducimus velit aut optio iusto et recusandae vitae. Sed consequatur obcaecati ut sint consequatur non iste repellendus eum dolor eveniet. Et laboriosam quia est minus omnis et amet veritatis.
             </p>
           </div>
@@ -29,7 +29,7 @@ const About = () => {
           </div>
         </div>
       </div>
-      <div className='max-w-7xl w-full h-[35vh] bg-[#013748] md:w-0 md:h-0'></div>
+      <div className='max-w-7xl mt-0 w-full h-[45vh] bg-[#013748] md:w-0 md:h-0'></div>
 
     </div>
   )

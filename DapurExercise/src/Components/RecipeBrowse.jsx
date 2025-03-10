@@ -9,34 +9,58 @@ import duck from "/bebekgoyeng.png";
 import gradient from "/bebekgradient.png";
 import { HiArrowLongRight } from "react-icons/hi2";
 import About from "./About";
+import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const RecipeBrowse = () => {
   const [randomMeals, setRandomMeals] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [recipeOfTheMonth, setRecipeOfTheMonth] = useState(null);
+  const navigate = useNavigate();
+
+  const handleNavigation = (path) => {
+    navigate(path);
+    window.location.reload();
+  };
+
+  const fetchRandomMeals = async () => {
+    try {
+      const meals = [];
+      for (let i = 0; i < 5; i++) {
+        const response = await fetch(
+          "https://www.themealdb.com/api/json/v1/1/random.php",
+        );
+        const data = await response.json();
+        if (data.meals && data.meals[0]) {
+          meals.push(data.meals[0].idMeal);
+        }
+      }
+      setRandomMeals(meals);
+    } catch (error) {
+      console.error("Failed to fetch random meals:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const recipeOfTheMonthHandler = async () => {
+    try {
+      const response = await fetch(
+        "https://www.themealdb.com/api/json/v1/1/lookup.php?i=52820"
+      );
+      const data = await response.json();
+      if (data.meals && data.meals[0]) {
+        setRecipeOfTheMonth(data.meals[0]);
+      }
+    } catch (error) {
+      console.error("Failed to fetch recipe of the month:", error);
+    }
+  };
 
   useEffect(() => {
-    const fetchRandomMeals = async () => {
-      try {
-        const meals = [];
-        for (let i = 0; i < 5; i++) {
-          const response = await fetch(
-            "https://www.themealdb.com/api/json/v1/1/random.php",
-          );
-          const data = await response.json();
-          if (data.meals && data.meals[0]) {
-            meals.push(data.meals[0].idMeal);
-          }
-        }
-        setRandomMeals(meals);
-      } catch (error) {
-        console.error("Failed to fetch random meals:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchRandomMeals();
-  }, []);
+    recipeOfTheMonthHandler();
+  }, []);  
 
   return (
     <div className="mx-0 pt-7">
@@ -56,7 +80,7 @@ const RecipeBrowse = () => {
         <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px]">
           <img
             className="absolute inset-0 h-full w-full object-cover object-center"
-            src={duck}
+            src={recipeOfTheMonth?.strMealThumb}
             alt=""
           />
           
@@ -72,7 +96,7 @@ const RecipeBrowse = () => {
             </h2>
 
             <button className="text-semibold bg-opacity-50 flex items-center gap-4 rounded border-2 border-white bg-transparent px-9 py-1 text-xl text-white transition-all duration-200 hover:bg-zinc-400 hover:scale-110">
-              Bebek Goreng{" "}
+              {recipeOfTheMonth?.strMeal}{" "}
               <span className="text-3xl">
                 <HiArrowLongRight />
               </span>
@@ -126,9 +150,10 @@ const RecipeBrowse = () => {
             )}
           </div>
           <div className="w-full flex justify-center">
-            <button className="bg-white-500 border-1 border-black text-black px-4 py-2 rounded-lg mt-5 hover:bg-gray-200 scale-110 hover:scale-125 transition-all duration-200">
-              Load More
-            </button>
+            <a onClick={() => handleNavigation('/category/all')} href="/category/all"
+              className="bg-white-500 border-1 border-black text-black px-4 py-2 rounded-lg mt-5 hover:bg-gray-200 scale-110 hover:scale-125 transition-all duration-200">
+              Look At All Our Recipes!
+            </a>
           </div>
         </div>
       </div>

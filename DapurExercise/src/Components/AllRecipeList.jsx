@@ -2,34 +2,34 @@ import React, { useState, useEffect } from "react";
 import MealDBRecipeRow from "./MealDBRecipeRow";
 import { useParams } from "react-router";
 
-const CategoryRecipeList = () => {
-  const { category } = useParams(); // ✅ Get category from URL
+const AllRecipeList = () => {
   const [randomMeals, setRandomMeals] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [loadMore, setLoadMore] = useState(0);
 
   useEffect(() => {
     const fetchRandomMeals = async () => {
       try {
-        const meals = [];
-        for (let i = 0; i < 15; i++) {
-          const response = await fetch("https://www.themealdb.com/api/json/v1/1/random.php");
+          const response = await fetch(
+            `https://www.themealdb.com/api/json/v1/1/search.php?f=${String.fromCharCode(97 + loadMore)}`,
+          );
           const data = await response.json();
-          if (data.meals && data.meals[0]) {
-            meals.push(data.meals[0].idMeal);
+          
+          if (data.meals) {
+            setRandomMeals((prevMeals) => [...prevMeals, ...data.meals.map((meal) => meal.idMeal)]);
+          } else {
+            setError(`No ${category} recipes found`);
           }
-        }
-        setRandomMeals(meals);
-      } catch (error) {
-        console.error("Failed to fetch random meals:", error);
-        setError("Failed to load recipes. Please try again.");
+      } catch (err) {
+        setError(`Failed to fetch ${category} recipes`);
       } finally {
         setLoading(false);
       }
     };
 
     fetchRandomMeals();
-  }, [category]);
+  }, [loadMore]);
 
   return (
     <div className="min-h-screen bg-white p-6 md:p-10">
@@ -56,8 +56,14 @@ const CategoryRecipeList = () => {
           </div>
         )}
       </div>
+
+      <div className="flex justify-center p-10">
+        <button onClick={() => setLoadMore((prev) => prev + 1)} className="bg-white border-1 border-black hover:bg-gray-100 hover:scale-115 transition-all font-bold py-2 px-4 rounded">
+          Load More
+        </button>
+      </div>
     </div>
   );
 };
 
-export default CategoryRecipeList;
+export default AllRecipeList;
