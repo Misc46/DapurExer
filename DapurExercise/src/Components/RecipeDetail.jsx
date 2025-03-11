@@ -40,7 +40,7 @@ const RecipeDetail = () => {
       let name = meal[`strIngredient${i}`];
       let quantity = meal[`strMeasure${i}`];
 
-      if (name == "" && quantity == "") {
+      if (name == "" || quantity == "") {
         break;
       }
 
@@ -82,9 +82,12 @@ const RecipeDetail = () => {
   useEffect(() => {
     if (meal && meal.strInstructions) {
       setParsedSteps(parseStep(meal.strInstructions));
+      console.log(parseIngredient(meal));
       setParsedIngredient(parseIngredient(meal));
     }
   }, [meal]);
+
+  useEffect(() => console.log(parseIngredient), [parseIngredient]);
 
   if (loading)
     return (
@@ -98,31 +101,31 @@ const RecipeDetail = () => {
     );
 
   return (
-    <div className="px-20 py-10">
-      <div className="flex flex-row">
-        <div className="w-1/3">
+    <div className="mx-auto max-w-[1500px] py-10 sm:px-20">
+      <div className="flex w-full flex-col items-center gap-5 md:flex-row md:items-start">
+        <div className="w-10/12 md:w-1/3">
           <img
             src={meal.strMealThumb}
-            className="h-80 w-full rounded object-cover"
+            className="h-80 w-full max-w-xl rounded-xl object-cover"
           />
         </div>
-        <div className="w-2/3 ps-10">
+
+        <div className="w-10/12 sm:ps-10 md:w-2/3">
           <h1 className="text-3xl font-bold">{meal.strMeal}</h1>
-          {/* for testing only 
-          <p>{JSON.stringify(meal)}</p>
-          <p>{meal.strInstructions}</p> */}
 
-          <ul className="list-decimal">
-            {parsedSteps.map((val, i) => (
-              <li key={i}>{val}</li>
-            ))}
-          </ul>
-
-          <ul className="list-disc">
+          <h2 className="mt-5 text-xl font-bold">Bahan-bahan:</h2>
+          <ul className="mt-2 list-disc ps-5">
             {parsedIngredient.map((val, i) => (
               <li key={i}>
                 {val.quantity} - {val.name}{" "}
               </li>
+            ))}
+          </ul>
+
+          <h2 className="mt-5 text-xl font-bold">Cara Memasak:</h2>
+          <ul className="mt-2 list-decimal ps-5">
+            {parsedSteps.map((val, i) => (
+              <li key={i}>{val}</li>
             ))}
           </ul>
         </div>
