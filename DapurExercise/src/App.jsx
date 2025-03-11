@@ -8,6 +8,7 @@ import CategoryRecipeList from "./Components/CategoryRecipeList";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./Components/Header";
 import AllRecipeList from "./Components/AllRecipeList";
+import RecipeDetail from "./Components/RecipeDetail";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/category/:category" element={<CategoryRecipeList />} />
           <Route path="/category/all" element={<AllRecipeList />} />
+          <Route path="/recipe/:recipeid" element={<RecipeDetail />} />
         </Routes>
         <Footer />
       </div>
