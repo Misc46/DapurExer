@@ -107,11 +107,11 @@ const RecipeBrowse = () => {
         </div>
       </div>
 
-      <div className="mx-10 p-10">
+      <div className="mx-auto max-w-7xl p-10">
         <div className="mb-15">
           <h2 className="mb-5 text-3xl font-bold">Categories:</h2>
 
-          <div className="flex w-full flex-wrap justify-center gap-8">
+          <div className="flex w-full flex-wrap justify-center gap-4 sm:gap-8">
             <CategoryCard
               image={chicken}
               name={"Chicken"}
@@ -131,9 +131,9 @@ const RecipeBrowse = () => {
           </div>
         </div>
 
-        <div>
+        <div className="mx-auto max-w-7xl">
           <h2 className="mb-5 text-3xl font-bold">International Recipes:</h2>
-          <div className="mx-auto flex flex-wrap justify-center gap-4">
+          <div className="mx-auto flex flex-wrap justify-around gap-4">
             {loading ? (
               <div>Loading recipes...</div>
             ) : (
