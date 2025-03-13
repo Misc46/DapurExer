@@ -5,11 +5,10 @@ import vegetable from "/vegetable.png";
 import seafood from "/seafood.png";
 import beef from "/beef.png";
 import { useState, useEffect } from "react";
-import duck from "/bebekgoyeng.png";
 import gradient from "/bebekgradient.png";
 import { HiArrowLongRight } from "react-icons/hi2";
 import About from "./About";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const RecipeBrowse = () => {
@@ -46,7 +45,7 @@ const RecipeBrowse = () => {
   const recipeOfTheMonthHandler = async () => {
     try {
       const response = await fetch(
-        "https://www.themealdb.com/api/json/v1/1/lookup.php?i=52820"
+        "https://www.themealdb.com/api/json/v1/1/lookup.php?i=52820",
       );
       const data = await response.json();
       if (data.meals && data.meals[0]) {
@@ -60,7 +59,7 @@ const RecipeBrowse = () => {
   useEffect(() => {
     fetchRandomMeals();
     recipeOfTheMonthHandler();
-  }, []);  
+  }, []);
 
   return (
     <div className="mx-0 pt-7">
@@ -77,27 +76,28 @@ const RecipeBrowse = () => {
       </div>
 
       <div className="relative my-auto w-full bg-cover bg-center">
-        <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px]">
+        <div className="relative h-[400px] w-full md:h-[500px] lg:h-[600px]">
           <img
             className="absolute inset-0 h-full w-full object-cover object-center"
             src={recipeOfTheMonth?.strMealThumb}
             alt=""
           />
-          
+
           <img
-            className="absolute top-0 left-0 object-cover object-center h-full w-full"
+            className="absolute top-0 left-0 h-full w-full object-cover object-center"
             src={gradient}
             alt=""
           />
 
           <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center text-white">
-            <h2 className="mt-35 md:mt-70 pb-5 text-4xl font-semibold">
+            <h2 className="mt-35 pb-5 text-4xl font-semibold md:mt-70">
               Recipe of the month!
             </h2>
 
-            <a 
+            <a
               href={`/recipe/${recipeOfTheMonth?.idMeal}`}
-              className="text-semibold bg-opacity-50 flex items-center gap-4 rounded border-2 border-white bg-transparent px-9 py-1 text-xl text-white transition-all duration-200 hover:bg-zinc-400 hover:scale-110">
+              className="text-semibold bg-opacity-50 flex items-center gap-4 rounded border-2 border-white bg-transparent px-9 py-1 text-xl text-white transition-all duration-200 hover:scale-110 hover:bg-zinc-400"
+            >
               {recipeOfTheMonth?.strMeal}{" "}
               <span className="text-3xl">
                 <HiArrowLongRight />
@@ -131,15 +131,6 @@ const RecipeBrowse = () => {
           </div>
         </div>
 
-        {/* <div>
-        <h2 className="mb-5 text-3xl font-bold">Local Recipes:</h2>
-        <div className="mx-auto flex flex-wrap justify-center gap-8">
-          <RecipeCard />
-          <RecipeCard />
-          <RecipeCard />
-        </div>
-      </div> */}
-
         <div>
           <h2 className="mb-5 text-3xl font-bold">International Recipes:</h2>
           <div className="mx-auto flex flex-wrap justify-center gap-4">
@@ -151,17 +142,19 @@ const RecipeBrowse = () => {
               ))
             )}
           </div>
-          <div className="w-full flex justify-center">
-            <a onClick={() => handleNavigation('/category/all')} href="/category/all"
-              className="bg-white-500 border-1 border-black text-black px-4 py-2 rounded-lg mt-5 hover:bg-gray-200 scale-110 hover:scale-125 transition-all duration-200">
+          <div className="flex w-full justify-center">
+            <a
+              onClick={() => handleNavigation("/category/all")}
+              href="/category/all"
+              className="bg-white-500 mt-5 scale-110 rounded-lg border-1 border-black px-4 py-2 text-black transition-all duration-200 hover:scale-125 hover:bg-gray-200"
+            >
               Look At All Our Recipes!
             </a>
           </div>
         </div>
       </div>
 
-      <About/>
-
+      <About />
     </div>
   );
 };
